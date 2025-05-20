@@ -70,6 +70,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *deviceSN;
 
 /**
+ 设备IMEI号
+ */
+@property (nonatomic, copy) NSString *deviceIMEI;
+
+/**
  固件更新日期｜Firmware update date
  */
 @property (nonatomic, copy) NSString *firmwareUpdateTime;

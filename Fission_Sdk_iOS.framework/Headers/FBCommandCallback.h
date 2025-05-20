@@ -90,9 +90,8 @@ typedef void (^FBReqProtocolVersionBlock)(NSString * _Nullable responseObject, N
 /**
  *@brief 监听设备->手机实时数据流 结果回调｜Monitoring device - > callback of mobile real-time data flow result
  *@param responseObject                         实时数据流信息｜Real time data flow information
- *@param error                                  错误信息｜Error message
  */
-typedef void (^FBStreamDataHandlerBlock)(FBStreamDataModel * _Nullable responseObject, NSError * _Nullable error);
+typedef void (^FBStreamDataHandlerBlock)(FBStreamDataModel * responseObject);
 
 /**
  *@brief 监听设备->手机即时拍照 结果回调｜Monitoring device - > callback of mobile phone instant photographing results
@@ -542,6 +541,12 @@ typedef void (^FBGetOfflineVoiceInfoBlock)(FB_RET_CMD status, float progress, FB
  *@param error                                  错误信息｜Error message
  */
 typedef void (^FBGetResumeDownloadFileBlock)(FB_RET_CMD status, float progress, FBResumeDownloadFileModel * _Nullable responseObject, NSError * _Nullable error);
+
+/**
+ *@brief 监听设备->手机实时游戏数据流 结果回调｜Monitoring device->Real-time mobile game data stream Result callback
+ *@param responseObject                         实时游戏数据流信息｜Real-time game data streaming information
+ */
+typedef void (^FBGameStreamDataHandlerBlock)(FBGameStreamDataModel * responseObject);
 
 /**
  block回调类｜Block callback class

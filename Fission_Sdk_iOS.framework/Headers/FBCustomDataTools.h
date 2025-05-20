@@ -124,6 +124,9 @@ NS_ASSUME_NONNULL_BEGIN
  13.FB_OTANotification_Album_Image
     Photo_L******_xxxxxxxxxx.bin（其中******为文件大小，xxxxxxxxxx为时间戳｜Where ****** is the file size, xxxxxxxxxx is the timestamp）
  
+ 14.FB_OTANotification_Avatar_Image
+    Avatar_L******_xxxxxxxxxx.bin（其中******为文件大小，xxxxxxxxxx为时间戳｜Where ****** is the file size, xxxxxxxxxx is the timestamp）
+ 
  
  更多...待拓展｜More...to be expanded
  */

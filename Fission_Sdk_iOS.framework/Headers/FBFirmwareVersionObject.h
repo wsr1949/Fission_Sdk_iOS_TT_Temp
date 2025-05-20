@@ -75,6 +75,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *deviceSN;
 
 /**
+ 设备IMEI号
+ */
+@property (nonatomic, copy) NSString *deviceIMEI;
+
+/**
  固件更新日期 | Firmware update date
 */
 @property (nonatomic, copy) NSString *firmwareUpdateTime;
@@ -603,6 +608,13 @@ NS_ASSUME_NONNULL_BEGIN
  @note  NO：不支持、YES：支持｜NO: not support YES: support
 */
 @property (nonatomic, assign) BOOL supportVideo;
+
+/**
+ 🌟是否支持游戏｜Whether to support games🌟
+ 
+ @note  NO：不支持、YES：支持｜NO: not support YES: support
+*/
+@property (nonatomic, assign) BOOL supportGames;
 
 
 @end
