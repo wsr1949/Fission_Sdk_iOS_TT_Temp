@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name                     = "Fission_Sdk_iOS_TT_Temp"
-  spec.version                  = "3.2.9"
+  spec.version                  = "3.3.0-beta.1"
   spec.summary                  = "Fission智能手表SDK for iOS"
   spec.description              = <<-DESC
                                   Fission 智能手表的 iOS 框架，负责与智能手表设备通信等功能的封装｜Framework Function: iOS framework for Fission smart watch, which is responsible for the communication with the watch.
@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'AllDependencys' do |allDependency|
-    allDependency.vendored_frameworks     = 'RTKOTASDK.framework', 'RTKLEFoundation.framework', 'RTKRealChatConnection.framework', 'RTKAudioStreaming.framework'
+    allDependency.vendored_frameworks = 'RTKOTASDK.xcframework', 'RTKLEFoundation.xcframework', 'RTKRealChatConnection.xcframework', 'RTKAudioStreaming.xcframework', 'libRTKCompression.xcframework'
   end
 
   spec.pod_target_xcconfig      = { 
