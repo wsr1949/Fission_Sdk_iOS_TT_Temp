@@ -616,6 +616,27 @@ NS_ASSUME_NONNULL_BEGIN
 */
 @property (nonatomic, assign) BOOL supportGames;
 
+/**
+ 🌟是否支持艾闪会议纪要二维码付款提示｜Support QR code payment reminder for AiShan meeting minutes🌟
+ 
+ @note  NO：不支持、YES：支持｜NO: not support YES: support
+*/
+@property (nonatomic, assign) BOOL supportQR_AS_MTG;
+
+/**
+ 🌟是否支持区分AI表盘和相册表盘｜Whether to support distinguish between AI watch faces and album watch faces🌟
+ 
+ @note  NO：不支持、YES：支持｜NO: not support YES: support
+*/
+@property (nonatomic, assign) BOOL supportDiffDials;
+
+/**
+ 🌟是否支持消息bit位扩充｜Whether to support message bit expansion🌟
+ 
+ @note  NO：不支持、YES：支持｜NO: not support YES: support
+*/
+@property (nonatomic, assign) BOOL supportMsgBitExpansion;
+
 
 @end
 
