@@ -498,7 +498,10 @@ typedef NS_ENUM (NSInteger, FB_OTANOTIFICATION) {
     FB_OTANotification_UI                       = 7,    //增量升级UI图片｜Incrementally upgrade UI images
     FB_OTANotification_Multi_Dial               = 8,    //多表盘压缩数据包｜Multi-dial compressed data package
     FB_OTANotification_Multi_Sport              = 9,    //多运动类型压缩数据包｜Multi-sport type compressed data package
-    FB_OTANotification_DynamicClockDial         = 10,   //升级动态表盘｜Upgrade dynamic dial
+    
+    FB_OTANotification_DynamicClockDial_0       = 10,   //升级动态表盘，索引0｜Upgrade dynamic dial, index 0
+    FB_OTANotification_DynamicClockDial_1       = 11,   //升级动态表盘，索引1｜Upgrade dynamic dial, index 1
+    
     FB_OTANotification_CustomClockDial          = 20,   //升级自定义表盘｜Upgrade custom dial
     FB_OTANotification_CustomClockDial_AI       = 21,   //升级AI表盘｜Upgrade custom dial
     

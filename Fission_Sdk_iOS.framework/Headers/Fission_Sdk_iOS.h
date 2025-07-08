@@ -14,8 +14,10 @@
                               Fission 智能手表的 iOS 框架，负责与智能手表设备通信等功能的封装。
   GitHub @link https://github.com/linwear/Fission_Sdk_iOS.git
   修改记录｜Modification Record:
-    project    2025-07-05  Version:3.3.0-beta.1 Build:20250705001
+    project    2025-07-08  Version:3.3.0 Build:20250708001
                             1.FB_OTANOTIFICATION 新增类型:
+                                FB_OTANotification_DynamicClockDial_0
+                                FB_OTANotification_DynamicClockDial_1
                                 FB_OTANotification_CustomClockDial_AI
                             2.FBFirmwareVersionObject 新增标志位:
                                 是否支持艾闪会议纪要二维码付款提示
