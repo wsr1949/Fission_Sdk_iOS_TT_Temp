@@ -637,6 +637,13 @@ NS_ASSUME_NONNULL_BEGIN
 */
 @property (nonatomic, assign) BOOL supportMsgBitExpansion;
 
+/**
+ 🌟是否支持NFC｜Support NFC🌟
+ 
+ @note  NO：不支持、YES：支持｜NO: not support YES: support
+*/
+@property (nonatomic, assign) BOOL supportNFC;
+
 
 @end
 

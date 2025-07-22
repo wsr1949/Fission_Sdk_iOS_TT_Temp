@@ -686,6 +686,105 @@ NS_ASSUME_NONNULL_BEGIN
 */
 - (void)fbGetSnoreRecordWithBlock:(FBGetSnoreRecordBlock _Nonnull)fbBlock;
 
+
+#pragma mark - 获取所有 NFC 卡片｜Get all NFC cards
+/**
+ 获取所有 NFC 卡片｜Get all NFC cards
+*/
+- (void)fbGetAllNFCCardsWithBlock:(FBGetAllNFCCardsBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 获取 NFC 已激活的卡片｜Get NFC activated cards
+/**
+ 获取 NFC 已激活的卡片｜Get NFC activated cards
+*/
+- (void)fbGetNFCActivatedCardWithBlock:(FBGetNFCCardBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 创建 NFC 复制卡｜Create NFC clone card
+/**
+ 创建 NFC 复制卡｜Create NFC clone card
+*/
+- (void)fbCreateNFCCloneCard:(FBNFCCardModel * _Nonnull)model withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 设置 NFC 复制卡信息｜Set NFC clone card information
+/**
+ 设置 NFC 复制卡信息｜Set NFC clone card information
+*/
+- (void)fbSetNFCCloneCard:(FBNFCCardModel * _Nonnull)model withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 激活 NFC 卡片｜Activate NFC card
+/**
+ 激活 NFC 卡片｜Activate NFC card
+*/
+- (void)fbActivateNFCCard:(NSString * _Nonnull)uid withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 修改 NFC 卡片｜Modify NFC card
+/**
+ 修改 NFC 卡片｜Modify NFC card
+*/
+- (void)fbModifyNFCCard:(FBNFCCardModel * _Nonnull)model withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 创建 NFC 空白卡｜Create NFC Blank Card
+/**
+ 创建 NFC 空白卡｜Create NFC Blank Card
+*/
+- (void)fbCreateNFCBlankCard:(FBNFCCardModel * _Nonnull)model withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 禁用当前 NFC 卡片｜Disable current NFC card
+/**
+ 禁用当前 NFC 卡片｜Disable current NFC card
+*/
+- (void)fbDisableNFCCardWithBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 删除所有 NFC 卡片｜Delete all NFC cards
+/**
+ 删除所有 NFC 卡片｜Delete all NFC cards
+*/
+- (void)fbDeleteAllNFCCardsWithBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 删除 NFC 卡片｜Delete NFC card
+/**
+ 删除 NFC 卡片｜Delete NFC card
+*/
+- (void)fbDeleteNFCCard:(NSString * _Nonnull)uid withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 读取 NFC 卡片原始数据｜Read NFC card raw data
+/**
+ 读取 NFC 卡片数据｜Read NFC card data
+*/
+- (void)fbReadNFCCardRawData:(NSString * _Nonnull)uid withBlock:(FBGetNFCCardBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 设置手表 NFC 进入读卡模式｜Set the watch to NFC card reader mode
+/**
+ 设置手表 NFC 进入读卡模式｜Set the watch to NFC card reader mode
+*/
+- (void)fbSetNFCCardReaderModeWithBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 读取 NFC 秘钥的基础数据(待远程破解)｜Read the basic data of the NFC key (to be cracked remotely)
+/**
+ 读取 NFC 秘钥的基础数据(待远程破解)｜Read the basic data of the NFC key (to be cracked remotely)
+*/
+- (void)fbReadNFCBasicKeyDataWithBlock:(FBReadNFCBasicDataBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 设置 NFC 秘钥数据(已远程破解)｜Set NFC key data (remotely cracked)
+/**
+ 设置 NFC 秘钥数据(已远程破解)｜Set NFC key data (remotely cracked)
+*/
+- (void)fbSetNFCKeyData:(NSData * _Nonnull)keyData withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

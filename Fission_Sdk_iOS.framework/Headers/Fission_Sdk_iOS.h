@@ -14,7 +14,7 @@
                               Fission 智能手表的 iOS 框架，负责与智能手表设备通信等功能的封装。
   GitHub @link https://github.com/linwear/Fission_Sdk_iOS.git
   修改记录｜Modification Record:
-    project    2025-07-08  Version:3.3.0 Build:20250708001
+    project    2025-07-22  Version:3.3.0 Build:20250722001
                             1.FB_OTANOTIFICATION 新增类型:
                                 FB_OTANotification_DynamicClockDial_0
                                 FB_OTANotification_DynamicClockDial_1
@@ -23,6 +23,7 @@
                                 是否支持艾闪会议纪要二维码付款提示
                                 是否支持区分AI表盘和相册表盘
                                 是否支持消息bit位扩充
+                                是否支持NFC
                             3.FBMessageModel类新增消息类型开关
                                 Postal
                                 Drive
@@ -32,6 +33,11 @@
                                 Uber
                                 Wynk Music
                                 Yahoo Mail
+                            4.8773自定义表盘图片资源size自适应缩放
+                            5.EM_FUNC_SWITCH 新增类型:
+                                FS_NFC_REQUEST_NOTIFY(54)
+                                FS_AIR_PRESSURE_REQUEST(56)
+                            6.新增NFC相关协议 @see（FBBgCommand）NFC...
  
     project    2025-06-18  Version:3.2.9 Build:20250618001
                             1.基于Xcode16.4编译以支持Swift6.1
@@ -458,6 +464,7 @@ FOUNDATION_EXPORT const unsigned char Fission_Sdk_iOSVersionString[];
 #import <Fission_Sdk_iOS/FBGameStreamDataModel.h>
 #import <Fission_Sdk_iOS/FBSnoreModel.h>
 #import <Fission_Sdk_iOS/FBSnoreRecordModel.h>
+#import <Fission_Sdk_iOS/FBNFCCardModel.h>
 
 /** 蓝牙管理器｜Bluetooth manager */
 #import <Fission_Sdk_iOS/FBCommandCallback.h>

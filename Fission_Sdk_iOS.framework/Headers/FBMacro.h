@@ -11,6 +11,7 @@
 /** FBLog 日志输出通知名称｜FBLog log output notification name */
 static NSString *const FBLOGNOTIFICATIONOFOUTPUT = @"FBLOGNOTIFICATIONOFOUTPUT";
 
+
 #pragma mark - 错误码｜Error code
 /*
  * 错误码｜Error code
@@ -48,6 +49,14 @@ typedef NS_ENUM (NSInteger, FB_RET_CMD) {
     FB_DATATRANSMISSIONDONE                     = 200,      //数据传输完成｜Data transmission complete
     FB_DATATRANSMISSIONFAILED                   = 500,      //数据传输失败｜Data transfer failed
     
+    //NFC错误码｜NFC Error Codes
+    FB_NFC_ERROR_01                             = 200001,   //没有卡片｜No card
+    FB_NFC_ERROR_02                             = 200002,   //无激活的卡片｜No activated card
+    FB_NFC_ERROR_03                             = 200003,   //已有相同 ID 的卡片｜A card with the same ID already exists
+    FB_NFC_ERROR_04                             = 200004,   //没有此 ID 的卡片｜No card with this ID
+    FB_NFC_ERROR_05                             = 200005,   //创建卡片失败｜Failed to create card
+    FB_NFC_ERROR_06                             = 200006,   //删除卡片失败｜Failed to delete card
+    
     //GPS运动状态执行错误｜GPS motion status execution error
     FB_GPS_MOTION_STATE_LOWPRESSUREERROR        = 200012,   //执行失败，低压无法执行｜Execution failed, low voltage cannot be executed
     FB_GPS_MOTION_STATE_COMMANDSTATUSERROR      = 200013,   //指令状态错误｜Command status error
@@ -55,7 +64,8 @@ typedef NS_ENUM (NSInteger, FB_RET_CMD) {
     FB_GPS_MOTION_STATE_INCALLERROR             = 200015,   //正在通话中，无法执行此指令｜This command cannot be executed during a call
     FB_GPS_MOTION_STATE_CANCELS                 = 200017,   //手表取消开启运动｜The watch cancels the movement
     FB_GPS_MOTION_STATE_NONE                    = 200019,   //本地无此运动信息｜There is no local sports information
-};
+} NS_SWIFT_NAME(FB_RET_CMD);
+
 
 #pragma mark - 电池电量等级｜Battery level
 /*
@@ -66,7 +76,8 @@ typedef NS_ENUM (NSInteger, FB_BATTERYLEVEL) {
     BATT_LOW_POWER = 1,  //低压｜Low power
     BATT_CHARGING  = 2,  //充电中｜Charging
     BATT_FULL      = 3,  //电池满｜Full power
-};
+} NS_SWIFT_NAME(FB_BATTERYLEVEL);
+
 
 #pragma mark - 时间显示模式｜Time display mode
 /*
@@ -75,7 +86,8 @@ typedef NS_ENUM (NSInteger, FB_BATTERYLEVEL) {
 typedef NS_ENUM (NSInteger, FB_TIMEDISPLAYMODE) {
     FB_TimeDisplayMode12Hours = 12,  //12小时制｜12 hour system
     FB_TimeDisplayMode24Hours = 24,  //24小时制｜24 hour system
-};
+} NS_SWIFT_NAME(FB_TIMEDISPLAYMODE);
+
 
 #pragma mark - 多语种国际化 和 SDK多语言设置｜Multilingual internationalization and SDK Multilingual Settings
 /*
@@ -115,7 +127,8 @@ typedef NS_ENUM (NSInteger, FB_LANGUAGES) {
     FB_SDK_sk       = 30,   //斯洛伐克语｜Slovak
     FB_SDK_my       = 31,   //缅甸语｜Burmese
     FB_SDK_da       = 32,   //丹麦语｜Danish
-};
+} NS_SWIFT_NAME(FB_LANGUAGES);
+
 
 #pragma mark - 距离单位 ｜Distance unit
 /*
@@ -124,7 +137,8 @@ typedef NS_ENUM (NSInteger, FB_LANGUAGES) {
 typedef NS_ENUM (NSInteger, FB_DISTANCEUNIT) {
     FB_EnglishUnits = 0,  //英制单位｜English units
     FB_MetricUnit   = 1,  //公制单位｜Metric unit
-};
+} NS_SWIFT_NAME(FB_DISTANCEUNIT);
+
 
 #pragma mark - 女性生理状态 ｜Female physiological state
 /*
@@ -138,7 +152,8 @@ typedef NS_ENUM (NSInteger, FB_FEMALEPHYSIOLOGICALSTATE) {
     FB_FPS_Ovulation            = 4,  //排卵期｜During ovulation
     FB_FPS_OvulationDay         = 5,  //排卵日｜Ovulation day
     FB_FPS_PregnancyPreparation = 6,  //备孕期｜Pregnancy preparation period
-};
+} NS_SWIFT_NAME(FB_FEMALEPHYSIOLOGICALSTATE);
+
 
 #pragma mark - 女性生理健康模式｜Female 's physical health model
 /*
@@ -149,7 +164,8 @@ typedef NS_ENUM (NSInteger, FB_FEMALEPHYSIOLOGICALHEALTHMODEL) {
     FB_HealthModel_Menstrual            = 1,  //月经期｜Menstrual period
     FB_HealthModel_PregnancyPreparation = 2,  //备孕期｜Pregnancy preparation period
     FB_HealthModel_Pregnancy            = 3,  //怀孕期｜Pregnancy
-};
+} NS_SWIFT_NAME(FB_FEMALEPHYSIOLOGICALHEALTHMODEL);
+
 
 #pragma mark - 短跑模式 ｜Sprint mode
 /*
@@ -158,7 +174,8 @@ typedef NS_ENUM (NSInteger, FB_FEMALEPHYSIOLOGICALHEALTHMODEL) {
 typedef NS_ENUM (NSInteger, FB_SPRINTMODE) {
     FB_SPRINTMODE_OFF = 0,  //关闭｜Close
     FB_SPRINTMODE_ON  = 1,  //开启｜Open
-};
+} NS_SWIFT_NAME(FB_SPRINTMODE);
+
 
 #pragma mark - 心率等级｜Heart rate rating
 /*
@@ -172,7 +189,8 @@ typedef NS_ENUM (NSInteger, FB_CURRENTHEARTRANGE) {
     FB_HR_TAKE_IT_EASY      = 4,  //别紧张｜Take it easy
     FB_HR_WATCH_YOUR_LIMITS = 5,  //注意你的极限｜Watch your limits
     FB_HR_DONT_OVEREXERT    = 6,  //不要用力过猛｜Don't overdo it
-};
+} NS_SWIFT_NAME(FB_CURRENTHEARTRANGE);
+
 
 #pragma mark - 血氧等级｜Blood oxygen level
 /*
@@ -183,7 +201,8 @@ typedef NS_ENUM (NSInteger, FB_CURRENTOXYRANGE) {
     FB_OXY_MILD     = 1,  //轻度缺氧｜Mild hypoxia
     FB_OXY_MODERATE = 2,  //中度缺氧｜Moderate hypoxia
     FB_OXY_SEVERE   = 3,  //重度缺氧｜Severe hypoxia
-};
+} NS_SWIFT_NAME(FB_CURRENTOXYRANGE);
+
 
 #pragma mark - 精神压力等级｜Stress level
 /*
@@ -194,7 +213,8 @@ typedef NS_ENUM (NSInteger, FB_CURRENTSTRESSRANGE) {
     FB_STRESS_NORMAL    = 1,  //26-50正常｜26-50 normal
     FB_STRESS_SECONDARY = 2,  //51-75中等｜51-75 Medium
     FB_STRESS_HIGN      = 3   //76-99偏高｜76-99 high
-};
+} NS_SWIFT_NAME(FB_CURRENTSTRESSRANGE);
+
 
 #pragma mark - 睡眠状态｜Sleep state
 /*
@@ -206,7 +226,8 @@ typedef NS_ENUM (NSInteger, FB_SLEEPSTATE) {
     Deep_sleep    = 2,  //深层睡眠｜Deep sleep
     
     Eye_move      = 3,  //眼动状态（结构体版本不等于0时才有此类型）｜Eye move (This type is only available when the structure version is not equal to 0)
-};
+} NS_SWIFT_NAME(FB_SLEEPSTATE);
+
 
 #pragma mark - 运动模式｜Movement mode
 /*
@@ -382,7 +403,8 @@ typedef NS_ENUM (NSInteger, FB_MOTIONMODE) {
     FBKITESURFING           = 151, //风筝冲浪｜Kitesurfing
     
     FBOther_reservation     = 255, //其他预留｜Other reservation
-};
+} NS_SWIFT_NAME(FB_MOTIONMODE);
+
 
 #pragma mark - 记录类型｜Record type
 /*
@@ -397,7 +419,8 @@ typedef NS_ENUM (NSInteger, FB_RECORDTYPE) {
     FB_MotionGpsRecord = 5,  //运动定位记录｜Motion location record
     FB_HFHeartRecord   = 6,  //运动高频心率记录(1秒1次)｜Sports high-frequency heart rate recording (1 time per second)
     FB_StressRecord    = 7,  //精神压力记录｜Stress Record
-};
+} NS_SWIFT_NAME(FB_RECORDTYPE);
+
 
 #pragma mark - 用户性别｜User gender
 /*
@@ -406,7 +429,7 @@ typedef NS_ENUM (NSInteger, FB_RECORDTYPE) {
 typedef NS_ENUM (NSInteger, FB_USERGENDER) {
     FB_UserMale   = 0,  //男性｜Male
     FB_UserFemale = 1,  //女性｜Female
-};
+} NS_SWIFT_NAME(FB_USERGENDER);
 
 #pragma mark - 闹铃类别｜Alarm category
 /*
@@ -415,7 +438,8 @@ typedef NS_ENUM (NSInteger, FB_USERGENDER) {
 typedef NS_ENUM (NSInteger, FB_ALARMCATEGORY) {
     FB_Reminders  = 0,  //备忘提醒｜Reminders
     FB_AlarmClock = 1,  //定时闹钟｜Alarm clock
-};
+} NS_SWIFT_NAME(FB_ALARMCATEGORY);
+
 
 #pragma mark - 天气｜Weather
 /*
@@ -443,7 +467,8 @@ typedef NS_ENUM (NSInteger, FB_WEATHER) {
     WT_RAINSTORM           = 18,  //暴雨｜Rainstorm
     
     WT_UNKNOW              = 255, //未知天气｜Unknown weather
-};
+} NS_SWIFT_NAME(FB_WEATHER);
+
 
 #pragma mark - 空气质量等级｜Air quality level
 /*
@@ -453,7 +478,8 @@ typedef NS_ENUM (NSInteger, FB_AIRLEVEL) {
     AL_BAD     = 0,  //差｜Bad
     AL_GOOD    = 1,  //良｜Good
     AL_WONDFUL = 2,  //优｜Wonderful
-};
+} NS_SWIFT_NAME(FB_AIRLEVEL);
+
 
 #pragma mark - PM2.5等级｜PM2.5 grade
 /*
@@ -465,7 +491,8 @@ typedef NS_ENUM (NSInteger, FB_PM25) {
     PM_LEVEL3 = 2,  //轻度污染｜Light pollution
     PM_LEVEL4 = 3,  //中度污染｜Moderate pollution
     PM_LEVEL5 = 4,  //重度污染｜Heavy pollution
-};
+} NS_SWIFT_NAME(FB_PM25);
+
 
 #pragma mark - 风向｜Wind direction
 /*
@@ -481,7 +508,8 @@ typedef NS_ENUM (NSInteger, EM_WINDDIRECTION) {
     WD_6 = 6,  //西北风｜Northwest wind
     WD_7 = 7,  //北风｜North wind
     WD_8 = 8,  //东北风｜Northeasterly wind
-};
+} NS_SWIFT_NAME(EM_WINDDIRECTION);
+
 
 #pragma mark - OTA类型通知｜OTA type notification
 /*
@@ -535,7 +563,8 @@ typedef NS_ENUM (NSInteger, FB_OTANOTIFICATION) {
     FB_OTANotification_ERROR_Busy               = 254,  //设备处于禁止OTA状态，稍后再试｜The device is in OTA prohibited state, please try again later
     
     FB_OTANotification_Cancel                   = 255,  //放弃当前升级｜Discard current upgrade
-};
+} NS_SWIFT_NAME(FB_OTANOTIFICATION);
+
 
 #pragma mark - 获取多个记录报告｜Get multiple record reports
 /*
@@ -563,7 +592,8 @@ typedef NS_ENUM (NSInteger, FB_MULTIPLERECORDREPORTS) {
     FB_SportsStatisticsReport           = 1<<16,  //运动统计报告｜Sports statistics report
     FB_Sports_Statistics_Details_Report = 1<<17,  //运动统计报告+运动详情纪录｜Sports statistics report + sports details record
     FB_ManualMeasurementData            = 1<<18,  //手动测量数据｜Manual measurement data
-};
+} NS_SWIFT_NAME(FB_MULTIPLERECORDREPORTS);
+
 
 #pragma mark - 功能开关状态同步｜Function switch state synchronization
 /*
@@ -620,10 +650,13 @@ typedef NS_ENUM (NSInteger, EM_FUNC_SWITCH) {
     
     FS_DATA_SYNC_NOTIFY         = 51, //数据同步通知，1手动测量数据 2运动数据 3睡眠报告｜Data synchronization notification, 1 manual measurement data 2 exercise data 3 sleep report
     FS_WEATHER_REQUEST_NOTIFY   = 53, //天气请求通知｜Weather request notification
+    FS_NFC_REQUEST_NOTIFY       = 54, //NFC请求远程破解密钥通知｜NFC request remote key cracking
     FS_EXIT_GAME_NOTIFY         = 55, //游戏关闭通知｜Game shutdown notification
+    FS_AIR_PRESSURE_REQUEST     = 56, //请求海平面标准气压值校准｜Request sea level standard pressure calibration
     
     FS_OTHER_EXPAND             = 255  //更多功能待拓展｜More functions to be expanded
-};
+} NS_SWIFT_NAME(EM_FUNC_SWITCH);
+
 
 #pragma mark - 温度单位｜Temperature unit
 /*
@@ -632,7 +665,8 @@ typedef NS_ENUM (NSInteger, EM_FUNC_SWITCH) {
 typedef NS_ENUM (NSInteger, FB_TEMPERATUREUNIT) {
     FB_Centigrade       = 0,  //摄氏度C｜Centigrade(C)
     FB_FahrenheitDegree = 1,  //华氏度F｜Fahrenheit degree(F)
-};
+} NS_SWIFT_NAME(FB_TEMPERATUREUNIT);
+
 
 #pragma mark - 自定义表盘时间显示位置｜Custom dial time display position
 /*
@@ -644,7 +678,8 @@ typedef NS_ENUM (NSInteger, FB_CUSTOMDIALTIMEPOSITION) {
     FB_DialTimePositionStyleLeft   = 2,  //左｜Left
     FB_DialTimePositionStyleRight  = 3,  //右｜Right
     FB_DialTimePositionStyleMiddle = 4,  //中｜Middle
-};
+} NS_SWIFT_NAME(FB_CUSTOMDIALTIMEPOSITION);
+
 
 #pragma mark - 自定义表盘项目｜Custom dial items
 /*
@@ -674,7 +709,8 @@ typedef NS_ENUM (NSInteger, FB_CUSTOMDIALITEMS) {
     FB_CustomDialItems_BloodOxygen,     //血氧｜BloodOxygen
     FB_CustomDialItems_BloodPressure,   //血压｜BloodPressure
     FB_CustomDialItems_Stress,          //精神压力｜Stress
-};
+} NS_SWIFT_NAME(FB_CUSTOMDIALITEMS);
+
 
 #pragma mark - 指定提示功能｜Specify prompt function
 /*
@@ -683,7 +719,8 @@ typedef NS_ENUM (NSInteger, FB_CUSTOMDIALITEMS) {
 typedef NS_ENUM (NSInteger, FB_PROMPTFUNCTION) {
     FB_ExerciseHeartRate = 1,  //运动心率超高提示｜Exercise heart rate ultra-high prompt
     // 更多... 待拓展｜More... To be expanded
-};
+} NS_SWIFT_NAME(FB_PROMPTFUNCTION);
+
 
 #pragma mark - GPS运动状态｜GPS Motion status
 /*
@@ -694,7 +731,8 @@ typedef NS_ENUM (NSInteger, FB_GPS_MOTION_STATE) {
     FB_SettingStartMotion = 1,  //开始运动｜Start motion
     FB_SettingPauseMotion = 2,  //暂停运动｜Pause motion
     FB_SettingKeepMotion  = 3,  //继续运动｜Keep motion
-};
+} NS_SWIFT_NAME(FB_GPS_MOTION_STATE);
+
 
 #pragma mark - 运动心率区间｜Motion heart rate interval
 /*
@@ -707,7 +745,8 @@ typedef NS_ENUM (NSInteger, FB_MOTIONHEARTRATERANGE) {
     FB_Motion_Aerobic    = 2,  //有氧耐力｜Aerobic endurance
     FB_Motion_Limit      = 3,  //高强有氧｜High strength aerobic
     FB_Motion_Anaerobic  = 4,  //无氧｜anaerobic
-};
+} NS_SWIFT_NAME(FB_MOTIONHEARTRATERANGE);
+
 
 #pragma mark - 自定义表盘算法类型｜Custom dial algorithm type
 /*
@@ -716,7 +755,8 @@ typedef NS_ENUM (NSInteger, FB_MOTIONHEARTRATERANGE) {
 typedef NS_ENUM (NSInteger, FB_ALGORITHMGENERATION) {
     FB_OrdinaryAlgorithm = 0,  //普通算法｜Ordinary algorithm
     FB_CompressAlgorithm = 1   //压缩算法｜Compression algorithm
-};
+} NS_SWIFT_NAME(FB_ALGORITHMGENERATION);
+
 
 #pragma mark - 自定义设置开关类型｜Custom setting switch type
 /*
@@ -734,7 +774,8 @@ typedef NS_ENUM (NSInteger, FB_CUSTOMSETTINGSWITCHTYPE) {
     FB_SWITCH_TestMode          = 1<<7,         //进入测试模式开关｜Enter test mode switch
     FB_SWITCH_WristScreen       = 1<<8,         //抬腕亮屏开关｜Wrist up screen switch
     FB_SWITCH_ALL               = 0xFFFFFFFF,   //所有｜All
-};
+} NS_SWIFT_NAME(FB_CUSTOMSETTINGSWITCHTYPE);
+
 
 #pragma mark - 联系人类型｜Contact Type
 /*
@@ -743,7 +784,8 @@ typedef NS_ENUM (NSInteger, FB_CUSTOMSETTINGSWITCHTYPE) {
 typedef NS_ENUM (NSInteger, FB_CONTACTTYPE) {
     FB_CONTACTTYPE_FREQUENTLY   = 0x00,    //常用联系人｜Frequently used contacts
     FB_CONTACTTYPE_EMERGENCY    = 0xFF,    //紧急联系人｜Emergency Contacts
-};
+} NS_SWIFT_NAME(FB_CONTACTTYPE);
+
 
 #pragma mark - 芯片厂商｜Chip manufacturer
 /*
@@ -754,7 +796,8 @@ typedef NS_ENUM (NSInteger, FB_CHIPMANUFACTURERTYPE) {
     FB_CHIPMANUFACTURERTYPE_HISI        = 1,    //海思UIKit｜HiSilicon UIKit
     FB_CHIPMANUFACTURERTYPE_RTK_877x    = 2,    //瑞昱877x_HoneyGui｜Realtek 877x_HoneyGui
     // 更多... 待拓展｜More... To be expanded
-};
+} NS_SWIFT_NAME(FB_CHIPMANUFACTURERTYPE);
+
 
 #pragma mark - JS应用类型｜JS application type
 /*
@@ -770,7 +813,8 @@ typedef NS_ENUM (NSInteger, FB_JSAPPLICATIONTYPE) {
     FB_JSAPPLICATIONTYPE_AIDIAL     = 33,   //Ai表盘｜Ai Dial
     
     FB_JSAPPLICATIONTYPE_MEETING    = 35,   //会议纪要｜Meeting
-};
+} NS_SWIFT_NAME(FB_JSAPPLICATIONTYPE);
+
 
 #pragma mark - 设备动作类型｜Device action type
 /*
@@ -798,7 +842,8 @@ typedef NS_ENUM (NSInteger, FB_DEVICEACTIONTYPE) {
     FB_DEVICEACTIONTYPE_AI_MODEL_ONLINE       = 10,   //AI模型是否联网搜索｜Whether the AI ​​model is searched online
                                                       //‒ 0）不联网
                                                       //‒ 1）联网
-};
+} NS_SWIFT_NAME(FB_DEVICEACTIONTYPE);
+
 
 #pragma mark - JS应用结果｜JS application results
 /*
@@ -814,7 +859,8 @@ typedef NS_ENUM (NSInteger, FB_JSAPPLICATIONRESULTS) {
     FB_JSAPPLICATIONRESULTS_NETWORKERROR            = 36,   //网络异常｜Network Error
     FB_JSAPPLICATIONRESULTS_OTHERERROR              = 37,   //其他异常｜Other Error
     FB_JSAPPLICATIONRESULTS_SENDTHINKINGCHAIN       = 38,   //发思维链内容|Post thought chain content
-};
+} NS_SWIFT_NAME(FB_JSAPPLICATIONRESULTS);
+
 
 #pragma mark - 视频内容模式｜Video content mode
 /*
@@ -824,7 +870,8 @@ typedef NS_ENUM (NSInteger, FB_VIDEOCONTENTMODE) {
     FB_VIDEOCONTENTMODE_SCALETOFILL,      //类似UIViewContentModeScaleToFill｜Similar to UIViewContentModeScaleToFill
     FB_VIDEOCONTENTMODE_SCALEASPECTFILL,  //类似UIViewContentModeScaleAspectFill｜Similar to UIViewContentModeScaleAspectFill
     FB_VIDEOCONTENTMODE_SCALETORECT,      //指向裁剪矩形范围，如果RECT宽高比不同于设备，则最终会类似SCALETOFILL效果｜Points to the cropping rectangle. If the RECT aspect ratio is different from the device, the final effect will be similar to SCALETOFILL
-};
+} NS_SWIFT_NAME(FB_VIDEOCONTENTMODE);
+
 
 #pragma mark - 列表文件类型｜List file types
 /*
@@ -840,7 +887,8 @@ typedef NS_ENUM (NSInteger, FB_LISTFILEINFORTYPE) {
     FB_LISTFILEINFORTYPE_RING_CALL      = 7,    //来电铃声｜Incoming call ringtone
     FB_LISTFILEINFORTYPE_RING_ALARM     = 8,    //闹钟铃声｜Alarm ringtone
     FB_LISTFILEINFORTYPE_MEETING        = 9,    //会议纪要｜Meeting Minutes
-};
+} NS_SWIFT_NAME(FB_LISTFILEINFORTYPE);
+
 
 #pragma mark - 铃声类型｜Ringtone types
 /*
@@ -850,7 +898,8 @@ typedef NS_ENUM (NSInteger, FB_RINGTONETYPE) {
     FB_RINGTONETYPE_MESSAGE   = 0,     //消息提示音｜Message alert tone
     FB_RINGTONETYPE_CALL      = 1,     //来电铃声｜Incoming call ringtone
     FB_RINGTONETYPE_ALARM     = 10,    //闹钟铃声｜Alarm ringtone
-};
+} NS_SWIFT_NAME(FB_RINGTONETYPE);
+
 
 #pragma mark - 授权码类型｜Authorization code type
 /*
@@ -860,7 +909,8 @@ typedef NS_ENUM (NSInteger, FB_AUTHCODETYPE) {
     FB_AUTHCODETYPE_OFFLINEVOICE    = 1,     //离线语音授权码｜Offline voice authorization code
     FB_AUTHCODETYPE_GOMORE          = 2,     //GOMORE授权码｜GOMORE code
     // 更多... 待拓展｜More... To be expanded
-};
+} NS_SWIFT_NAME(FB_AUTHCODETYPE);
+
 
 #pragma mark - 游泳泳姿｜Swimming strokes
 /*
@@ -874,7 +924,8 @@ typedef NS_ENUM (NSInteger, FB_SWIMMINGSTROKES) {
     FB_SWIMMINGSTROKES_BUTTERFLYSTROKE   = 4,    //蝶泳｜Butterfly stroke
     FB_SWIMMINGSTROKES_MEDLEY            = 5,    //混合泳｜Medley
     FB_SWIMMINGSTROKES_UNKNOWN           = 0XFF, //未知｜Unknown
-};
+} NS_SWIFT_NAME(FB_SWIMMINGSTROKES);
+
 
 #pragma mark - 内置表盘开关掩码类型｜Built-in dial switch mask type
 /*
@@ -899,7 +950,8 @@ typedef NS_ENUM (NSInteger, FB_DIALSWITCHMASKTYPE) {
     FB_DIALSWITCHMASK_OPEN_15       = 1<<14,    //打开第15个｜Open the 15th
     FB_DIALSWITCHMASK_OPEN_16       = 1<<15,    //打开第16个｜Open the 16th
     FB_DIALSWITCHMASK_OPEN_ALL      = 0xFFFF,   //打开所有｜Open All
-};
+} NS_SWIFT_NAME(FB_DIALSWITCHMASKTYPE);
+
 
 #pragma mark - 文件类型｜File Type
 /*
@@ -908,7 +960,8 @@ typedef NS_ENUM (NSInteger, FB_DIALSWITCHMASKTYPE) {
 typedef NS_ENUM (NSInteger, FB_FILETYPE) {
     FB_FILETYPE_OPUS,   //Opus
     FB_FILETYPE_MP3,    //MP3
-};
+} NS_SWIFT_NAME(FB_FILETYPE);
+
 
 #pragma mark - 游戏厂家｜Game Manufacturer
 /*
@@ -916,7 +969,8 @@ typedef NS_ENUM (NSInteger, FB_FILETYPE) {
  */
 typedef NS_ENUM (NSInteger, FB_GAMEMANUFACTURER) {
     FB_GAMEMANUFACTURER_SMH5,   //十米葫芦｜SMH5
-};
+} NS_SWIFT_NAME(FB_GAMEMANUFACTURER);
+
 
 #pragma mark - 传感器类型｜Sensor Type
 /*
@@ -925,6 +979,17 @@ typedef NS_ENUM (NSInteger, FB_GAMEMANUFACTURER) {
 typedef NS_ENUM (NSInteger, FB_SENSORTYPE) {
     FB_SENSORTYPE_THREE_AXIS,   //三轴｜Three-axis
     FB_SENSORTYPE_SIX_AXIS,     //六轴｜Six-axis
-};
+} NS_SWIFT_NAME(FB_SENSORTYPE);
+
+
+#pragma mark - NFC类型｜NFC Type
+/*
+ * NFC类型｜NFC Type
+ */
+typedef NS_ENUM (NSInteger, FB_NFCTYPE) {
+    FB_NFCTYPE_ACCESSCARD,   //门禁卡｜Access card
+    // 更多... 待拓展｜More... To be expanded
+} NS_SWIFT_NAME(FB_NFCTYPE);
+
 
 #endif /* FBMacro_h */

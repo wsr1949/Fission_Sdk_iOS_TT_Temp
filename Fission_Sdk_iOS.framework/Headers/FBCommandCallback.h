@@ -567,6 +567,42 @@ typedef void (^FBGetSnoreBlock)(FB_RET_CMD status, float progress, FBSnoreModel 
 typedef void (^FBGetSnoreRecordBlock)(FB_RET_CMD status, float progress, NSArray <FBSnoreRecordModel *> * _Nullable responseObject, NSError * _Nullable error);
 
 /**
+ *@brief 获取鼾宝记录信息 调用结果回调｜Get the Snore record information and call the result callback
+ *@param status                                 状态码｜Status code
+ *@param progress                               当前进度0～1｜Current progress 0 ~ 1
+ *@param responseObject                         鼾宝记录信息｜Snore record information
+ *@param error                                  错误信息｜Error message
+ */
+typedef void (^FBGetSnoreRecordBlock)(FB_RET_CMD status, float progress, NSArray <FBSnoreRecordModel *> * _Nullable responseObject, NSError * _Nullable error);
+
+/**
+ *@brief 获取 NFC 所有卡片信息 调用结果回调｜Get all NFC card information and call the result callback
+ *@param status                                 状态码｜Status code
+ *@param progress                               当前进度0～1｜Current progress 0 ~ 1
+ *@param responseObject                         所有NFC卡片信息｜All NFC card information
+ *@param error                                  错误信息｜Error message
+ */
+typedef void (^FBGetAllNFCCardsBlock)(FB_RET_CMD status, float progress, NSArray <FBNFCCardModel *> * _Nullable responseObject, NSError * _Nullable error);
+
+/**
+ *@brief 获取 NFC 卡片信息 调用结果回调｜Get NFC card information and call the result callback
+ *@param status                                 状态码｜Status code
+ *@param progress                               当前进度0～1｜Current progress 0 ~ 1
+ *@param responseObject                         NFC卡片信息｜NFC card information
+ *@param error                                  错误信息｜Error message
+ */
+typedef void (^FBGetNFCCardBlock)(FB_RET_CMD status, float progress, FBNFCCardModel * _Nullable responseObject, NSError * _Nullable error);
+
+/**
+ *@brief 读取 NFC 秘钥的基础数据(待远程破解)Data 调用结果回调｜Read the basic data of the NFC key (to be cracked remotely) Data call result callback
+ *@param status                                 状态码｜Status code
+ *@param progress                               当前进度0～1｜Current progress 0 ~ 1
+ *@param responseObject                         NFC秘钥基础数据｜NFC key basic data
+ *@param error                                  错误信息｜Error message
+ */
+typedef void (^FBReadNFCBasicDataBlock)(FB_RET_CMD status, float progress, NSData * _Nullable responseObject, NSError * _Nullable error);
+
+/**
  block回调类｜Block callback class
  */
 @interface FBCommandCallback : NSObject
