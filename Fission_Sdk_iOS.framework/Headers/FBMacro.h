@@ -56,6 +56,7 @@ typedef NS_ENUM (NSInteger, FB_RET_CMD) {
     FB_NFC_ERROR_04                             = 200004,   //没有此 ID 的卡片｜No card with this ID
     FB_NFC_ERROR_05                             = 200005,   //创建卡片失败｜Failed to create card
     FB_NFC_ERROR_06                             = 200006,   //删除卡片失败｜Failed to delete card
+    FB_NFC_ERROR_07                             = 200007,   //卡片已满｜Card Full
     
     //GPS运动状态执行错误｜GPS motion status execution error
     FB_GPS_MOTION_STATE_LOWPRESSUREERROR        = 200012,   //执行失败，低压无法执行｜Execution failed, low voltage cannot be executed
@@ -411,14 +412,17 @@ typedef NS_ENUM (NSInteger, FB_MOTIONMODE) {
  * 记录类型｜Record type
  */
 typedef NS_ENUM (NSInteger, FB_RECORDTYPE) {
-    FB_HeartRecord     = 0,  //心率记录｜Heart rate recording
-    FB_StepRecord      = 1,  //计步记录｜Step count record
-    FB_BloodOxyRecord  = 2,  //血氧记录｜Blood oxygen recording
-    FB_BloodPreRecord  = 3,  //血压记录｜Blood pressure recording
-    FB_SportsRecord    = 4,  //运动详情记录｜Sports detail record
-    FB_MotionGpsRecord = 5,  //运动定位记录｜Motion location record
-    FB_HFHeartRecord   = 6,  //运动高频心率记录(1秒1次)｜Sports high-frequency heart rate recording (1 time per second)
-    FB_StressRecord    = 7,  //精神压力记录｜Stress Record
+    FB_HeartRecord          = 0,  //心率记录｜Heart rate recording
+    FB_StepRecord           = 1,  //计步记录｜Step count record
+    FB_BloodOxyRecord       = 2,  //血氧记录｜Blood oxygen recording
+    FB_BloodPreRecord       = 3,  //血压记录｜Blood pressure recording
+    FB_SportsRecord         = 4,  //运动详情记录｜Sports detail record
+    FB_MotionGpsRecord      = 5,  //运动定位记录｜Motion location record
+    FB_HFHeartRecord        = 6,  //运动高频心率记录(1秒1次)｜Sports high-frequency heart rate recording (1 time per second)
+    FB_StressRecord         = 7,  //精神压力记录｜Stress Record
+    FB_AirPressureRecord    = 8,  //气压记录｜Air pressure record
+    FB_BloodComponentRecord = 9,  //血液成分记录｜Blood component records
+    FB_BloodGlucoseRecord   = 10, //血糖记录｜Blood glucose record
 } NS_SWIFT_NAME(FB_RECORDTYPE);
 
 
@@ -554,6 +558,9 @@ typedef NS_ENUM (NSInteger, FB_OTANOTIFICATION) {
     
     FB_OTANotification_Avatar_Image             = 53,   //推送用户头像文件｜Push user avatar file
     
+    FB_OTANotification_WeChatAvatar_Image       = 59,   //推送微信用户头像文件｜Push WeChat user avatar files
+    FB_OTANotification_WeChat_Voice             = 61,   //推送微信语音文件｜Push WeChat voice files
+    
     FB_OTANotification_Multi_Dial_Built_in      = 200,  //厂线推送内置表盘压缩数据包｜The factory line pushes the built-in dial compressed data package
     FB_OTANotification_Multi_Sport_Built_in     = 201,  //厂线推送内置多运动类型压缩数据包｜The factory line pushes the built-in multi-sport type compressed data package
     
@@ -592,6 +599,9 @@ typedef NS_ENUM (NSInteger, FB_MULTIPLERECORDREPORTS) {
     FB_SportsStatisticsReport           = 1<<16,  //运动统计报告｜Sports statistics report
     FB_Sports_Statistics_Details_Report = 1<<17,  //运动统计报告+运动详情纪录｜Sports statistics report + sports details record
     FB_ManualMeasurementData            = 1<<18,  //手动测量数据｜Manual measurement data
+    FB_AirPressureRecording             = 1<<19,  //气压记录｜Air pressure record
+    FB_BloodComponentRecording          = 1<<20,  //血液成分记录｜Blood component records
+    FB_BloodGlucoseRecording            = 1<<21,  //血糖记录｜Blood glucose record
 } NS_SWIFT_NAME(FB_MULTIPLERECORDREPORTS);
 
 
@@ -653,6 +663,11 @@ typedef NS_ENUM (NSInteger, EM_FUNC_SWITCH) {
     FS_NFC_REQUEST_NOTIFY       = 54, //NFC请求远程破解密钥通知｜NFC request remote key cracking
     FS_EXIT_GAME_NOTIFY         = 55, //游戏关闭通知｜Game shutdown notification
     FS_AIR_PRESSURE_REQUEST     = 56, //请求海平面标准气压值校准｜Request sea level standard pressure calibration
+    FS_NFC_R_START_NOTIFY       = 57, //NFC开始读卡通知｜NFC card reading start notification
+    FS_NFC_R_FAILURE_NOTIFY     = 58, //NFC读卡失败通知｜NFC card reading failure notification
+    FS_NFC_R_SUCCESS_NOTIFY     = 59, //NFC读卡成功通知｜NFC card reading success notification
+    FS_TIMING_BG_WARN           = 60, //定时血糖采集开关状态，0关1开｜Timed blood glucose collection switch status, 0 off 1 on
+    FS_TIMING_BC_WARN           = 61, //定时血液成分采集开关状态，0关1开｜Timed blood component collection switch status, 0 off 1 on
     
     FS_OTHER_EXPAND             = 255  //更多功能待拓展｜More functions to be expanded
 } NS_SWIFT_NAME(EM_FUNC_SWITCH);
@@ -763,17 +778,22 @@ typedef NS_ENUM (NSInteger, FB_ALGORITHMGENERATION) {
  * 自定义设置开关类型｜Custom setting switch type
  */
 typedef NS_ENUM (NSInteger, FB_CUSTOMSETTINGSWITCHTYPE) {
-    FB_SWITCH_None              = 0,            //空｜None
-    FB_SWITCH_HeartRate         = 1<<0,         //定时心率采集开关｜Timing heart rate acquisition switch
-    FB_SWITCH_BloodOxygen       = 1<<1,         //定时血氧采集开关｜Timing blood oxygen collection switch
-    FB_SWITCH_BloodPressure     = 1<<2,         //定时血压采集开关｜Timing blood pressure collection switch
-    FB_SWITCH_MentalPressure    = 1<<3,         //定时精神压力采集开关｜Timing mental pressure acquisition switch
-    FB_SWITCH_CallAudio         = 1<<4,         //通话音频开关｜Call audio switch
-    FB_SWITCH_MultimediaAudio   = 1<<5,         //多媒体音频开关｜Multimedia Audio Switch
-    FB_SWITCH_DND               = 1<<6,         //勿扰开关｜Do not disturb switch
-    FB_SWITCH_TestMode          = 1<<7,         //进入测试模式开关｜Enter test mode switch
-    FB_SWITCH_WristScreen       = 1<<8,         //抬腕亮屏开关｜Wrist up screen switch
-    FB_SWITCH_ALL               = 0xFFFFFFFF,   //所有｜All
+    FB_SWITCH_None                  = 0,            //空｜None
+    FB_SWITCH_HeartRate             = 1<<0,         //定时心率采集开关｜Timing heart rate acquisition switch
+    FB_SWITCH_BloodOxygen           = 1<<1,         //定时血氧采集开关｜Timing blood oxygen collection switch
+    FB_SWITCH_BloodPressure         = 1<<2,         //定时血压采集开关｜Timing blood pressure collection switch
+    FB_SWITCH_MentalPressure        = 1<<3,         //定时精神压力采集开关｜Timing mental pressure acquisition switch
+    FB_SWITCH_CallAudio             = 1<<4,         //通话音频开关｜Call audio switch
+    FB_SWITCH_MultimediaAudio       = 1<<5,         //多媒体音频开关｜Multimedia Audio Switch
+    FB_SWITCH_DND                   = 1<<6,         //勿扰开关｜Do not disturb switch
+    FB_SWITCH_TestMode              = 1<<7,         //进入测试模式开关｜Enter test mode switch
+    FB_SWITCH_WristScreen           = 1<<8,         //抬腕亮屏开关｜Wrist up screen switch
+    FB_SWITCH_BloodGlucose          = 1<<9,         //定时血糖采集开关｜Timed blood glucose collection switch
+    FB_SWITCH_BloodComponent        = 1<<10,        //定时血液成分采集开关｜Timed blood component collection switch
+    FB_SWITCH_BloodPressure_Prv     = 1<<11,        //血压私人模式开关｜Blood pressure private mode switch
+    FB_SWITCH_BloodGlucose_Prv      = 1<<12,        //血糖私人模式开关｜Blood sugar private mode switch
+    FB_SWITCH_BloodComponent_Prv    = 1<<13,        //血液成分私人模式开关｜Blood component private mode switch
+    FB_SWITCH_ALL                   = 0xFFFFFFFF,   //所有｜All
 } NS_SWIFT_NAME(FB_CUSTOMSETTINGSWITCHTYPE);
 
 
@@ -990,6 +1010,21 @@ typedef NS_ENUM (NSInteger, FB_NFCTYPE) {
     FB_NFCTYPE_ACCESSCARD,   //门禁卡｜Access card
     // 更多... 待拓展｜More... To be expanded
 } NS_SWIFT_NAME(FB_NFCTYPE);
+
+
+#pragma mark - 设备震动等级｜Device vibration level
+/*
+ * 设备震动等级｜Device vibration level
+ */
+typedef NS_ENUM (NSInteger, FB_DEVICEVIBRATELEVEL) {
+    FB_DEVICEVIBRATELEVEL_NONE, //不震动｜No vibration
+    FB_DEVICEVIBRATELEVEL_1,    //震动等级1｜Vibration level 1
+    FB_DEVICEVIBRATELEVEL_2,    //震动等级2｜Vibration level 2
+    FB_DEVICEVIBRATELEVEL_3,    //震动等级3｜Vibration level 3
+    FB_DEVICEVIBRATELEVEL_4,    //震动等级4｜Vibration level 4
+    FB_DEVICEVIBRATELEVEL_5,    //震动等级5｜Vibration level 5
+    FB_DEVICEVIBRATELEVEL_6,    //震动等级6｜Vibration level 6
+} NS_SWIFT_NAME(FB_DEVICEVIBRATELEVEL);
 
 
 #endif /* FBMacro_h */

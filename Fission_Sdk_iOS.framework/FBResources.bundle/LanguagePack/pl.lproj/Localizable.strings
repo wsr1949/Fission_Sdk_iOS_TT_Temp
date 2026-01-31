@@ -98,6 +98,7 @@
 "没有此 ID 的卡片" = "Brak karty o tym identyfikatorze";
 "创建卡片失败" = "Nie udało się utworzyć karty";
 "删除卡片失败" = "Nie udało się usunąć karty";
+"卡片已满" = "Karta pełna";
 
 /**
  FBBluetoothOTA

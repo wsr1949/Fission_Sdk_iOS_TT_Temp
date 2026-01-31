@@ -308,6 +308,33 @@ typedef void (^FBGetExerciseHFHRRecordsBlock)(FB_RET_CMD status, float progress,
 typedef void (^FBGetManualMeasureDataBlock)(FB_RET_CMD status, float progress, NSArray <FBManualMeasureDataModel *> * _Nullable responseObject, NSError * _Nullable error);
 
 /**
+ *@brief 获取气压记录 调用结果回调｜Get the barometric pressure record and call the result callback
+ *@param status                                 状态码｜Status code
+ *@param progress                               当前进度0～1｜Current progress 0 ~ 1
+ *@param responseObject                         气压记录｜Air pressure record
+ *@param error                                  错误信息｜Error message
+ */
+typedef void (^FBGetAirPressureRecordBlock)(FB_RET_CMD status, float progress, NSArray <FBTypeRecordModel *> * _Nullable responseObject, NSError * _Nullable error);
+
+/**
+ *@brief 获取血液成分记录 调用结果回调｜Get the blood component record and call the result callback
+ *@param status                                 状态码｜Status code
+ *@param progress                               当前进度0～1｜Current progress 0 ~ 1
+ *@param responseObject                         血液成分记录｜Blood component record
+ *@param error                                  错误信息｜Error message
+ */
+typedef void (^FBGetBloodComponentRecordBlock)(FB_RET_CMD status, float progress, NSArray <FBTypeRecordModel *> * _Nullable responseObject, NSError * _Nullable error);
+
+/**
+ *@brief 获取血糖记录 调用结果回调｜Get the blood glucose record and call the result callback
+ *@param status                                 状态码｜Status code
+ *@param progress                               当前进度0～1｜Current progress 0 ~ 1
+ *@param responseObject                         血糖记录｜Blood glucose record
+ *@param error                                  错误信息｜Error message
+ */
+typedef void (^FBGetBloodGlucoseRecordBlock)(FB_RET_CMD status, float progress, NSArray <FBTypeRecordModel *> * _Nullable responseObject, NSError * _Nullable error);
+
+/**
  *@brief 获取指定记录报告数据 调用结果回调｜Get the specified record report data call result callback
  *@param status                                 状态码｜Status code
  *@param recordType                             当前返回的记录报告类型｜Currently returned record report type
@@ -601,6 +628,33 @@ typedef void (^FBGetNFCCardBlock)(FB_RET_CMD status, float progress, FBNFCCardMo
  *@param error                                  错误信息｜Error message
  */
 typedef void (^FBReadNFCBasicDataBlock)(FB_RET_CMD status, float progress, NSData * _Nullable responseObject, NSError * _Nullable error);
+
+/**
+ *@brief 获取血压私人模式信息 调用结果回调｜Get blood pressure private mode information and call result callback
+ *@param status                                 状态码｜Status code
+ *@param progress                               当前进度0～1｜Current progress 0 ~ 1
+ *@param responseObject                         血压私人模式信息｜Blood pressure private mode information
+ *@param error                                  错误信息｜Error message
+ */
+typedef void (^FBGetBloodPressureBlock)(FB_RET_CMD status, float progress, FBBloodPressureModel * _Nullable responseObject, NSError * _Nullable error);
+
+/**
+ *@brief 获取血液成分私人模式信息 调用结果回调｜Get blood component private mode information and call the result callback
+ *@param status                                 状态码｜Status code
+ *@param progress                               当前进度0～1｜Current progress 0 ~ 1
+ *@param responseObject                         血液成分私人模式信息｜Blood component private mode information
+ *@param error                                  错误信息｜Error message
+ */
+typedef void (^FBGetBloodCompositionBlock)(FB_RET_CMD status, float progress, FBBloodCompositionModel * _Nullable responseObject, NSError * _Nullable error);
+
+/**
+ *@brief 获取血糖私人模式信息 调用结果回调｜Get blood sugar private mode information and call result callback
+ *@param status                                 状态码｜Status code
+ *@param progress                               当前进度0～1｜Current progress 0 ~ 1
+ *@param responseObject                         血糖私人模式信息｜Blood sugar private mode information
+ *@param error                                  错误信息｜Error message
+ */
+typedef void (^FBGetBloodSugarBlock)(FB_RET_CMD status, float progress, FBBloodSugarModel * _Nullable responseObject, NSError * _Nullable error);
 
 /**
  block回调类｜Block callback class

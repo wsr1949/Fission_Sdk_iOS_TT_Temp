@@ -98,6 +98,7 @@
 "没有此 ID 的卡片" = "Bu kimliğe sahip bir kart yok";
 "创建卡片失败" = "Kart oluşturulamadı";
 "删除卡片失败" = "Kart silinemedi";
+"卡片已满" = "Kart Dolu";
 
 /**
  FBBluetoothOTA

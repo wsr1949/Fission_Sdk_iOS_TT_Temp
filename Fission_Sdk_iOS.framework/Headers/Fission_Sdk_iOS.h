@@ -14,16 +14,45 @@
                               Fission 智能手表的 iOS 框架，负责与智能手表设备通信等功能的封装。
   GitHub @link https://github.com/linwear/Fission_Sdk_iOS.git
   修改记录｜Modification Record:
-    project    2025-07-22  Version:3.3.0 Build:20250722001
+ 
+    project    2026-01-31  Version:3.3.5 Build:20260131001
+                            1.生成自定义表盘返回参数由NSData改为FBCustomDialResult
+ 
+    project    2025-12-10  Version:3.3.4 Build:20251210001
+                            1.设置设备震动一次（增加震动等级） @see（FBAtCommand）fbSetDeviceVibrateOnceWithLevel:withBlock:
+                            2.鼾宝震动记录（增加佩戴状态，震动等级） @see（FBSnoreRecordModel）
+                            3.过滤鼾宝无效记录
+ 
+    project    2025-10-13  Version:3.3.3 Build:20251013001
+                            1.设置设备震动一次 @see（FBAtCommand）fbSetDeviceVibrateOnceWithBlock:
+ 
+    project    2025-09-13  Version:3.3.2 Build:20250913001
+                            1.鼾宝震动记录增加血氧值
+ 
+    project    2025-09-05  Version:3.3.1 Build:20250905001
+                            1.剔除部分依赖库
+ 
+    project    2025-08-14  Version:3.3.0 Build:20250814001
                             1.FB_OTANOTIFICATION 新增类型:
                                 FB_OTANotification_DynamicClockDial_0
                                 FB_OTANotification_DynamicClockDial_1
                                 FB_OTANotification_CustomClockDial_AI
+                                FB_OTANotification_WeChatAvatar_Image
+                                FB_OTANotification_WeChat_Voice
                             2.FBFirmwareVersionObject 新增标志位:
                                 是否支持艾闪会议纪要二维码付款提示
                                 是否支持区分AI表盘和相册表盘
                                 是否支持消息bit位扩充
                                 是否支持NFC
+                                是否支持气压
+                                是否支持微信
+                                是否支持血液成份
+                                是否支持血糖
+                                是否支持日常血液成份检测开关控制
+                                是否支持日常血糖检测开关控制
+                                是否支持血液成份私人模式
+                                是否支持血糖私人模式
+                                是否支持血压私人模式
                             3.FBMessageModel类新增消息类型开关
                                 Postal
                                 Drive
@@ -37,7 +66,20 @@
                             5.EM_FUNC_SWITCH 新增类型:
                                 FS_NFC_REQUEST_NOTIFY(54)
                                 FS_AIR_PRESSURE_REQUEST(56)
+                                FS_NFC_R_START_NOTIFY(57)
+                                FS_NFC_R_FAILURE_NOTIFY(58)
+                                FS_NFC_R_SUCCESS_NOTIFY(59)
+                                FS_TIMING_BG_WARN(60)
+                                FS_TIMING_BC_WARN(61)
                             6.新增NFC相关协议 @see（FBBgCommand）NFC...
+                            7.新增支持NFC破解算法 @see（FBCustomDataTools）nfcCrackingInputData:callback: 依赖slm_remote_iOS.framework
+                            8.新增气压校准协议 @see（FBAtCommand）fbAirPressureCalibration:withBlock:
+                            9.新增血糖相关协议 @see（FBBgCommand）BloodGlucose...
+                            10.新增血液成份相关协议 @see（FBBgCommand）BloodComponent...
+                            11.新增支持微信回复 @see (FBBaiduCloudKit) requestWeChatAuthenticationWithMac: 每次连接成功需要调用一次鉴权，其他的由SDK内部自动管理，依赖ChatEmpowerSDK.framework、Starscream.framework、SILKDecoder.framework
+                            12.新增 定时血糖检测开关设置协议 @see（FBAtCommand）fbTimingBloodGlucoseDetectionSwitchData:withBlock:
+                            13.新增 定时血液成份检测开关设置协议 @see（FBAtCommand）fbTimingBloodComponentDetectionSwitchData:withBlock:
+                            14.新增依赖 Google的Protocol Buffers数据序列化与反序列化
  
     project    2025-06-18  Version:3.2.9 Build:20250618001
                             1.基于Xcode16.4编译以支持Swift6.1
@@ -465,6 +507,9 @@ FOUNDATION_EXPORT const unsigned char Fission_Sdk_iOSVersionString[];
 #import <Fission_Sdk_iOS/FBSnoreModel.h>
 #import <Fission_Sdk_iOS/FBSnoreRecordModel.h>
 #import <Fission_Sdk_iOS/FBNFCCardModel.h>
+#import <Fission_Sdk_iOS/FBBloodPressureModel.h>
+#import <Fission_Sdk_iOS/FBBloodCompositionModel.h>
+#import <Fission_Sdk_iOS/FBBloodSugarModel.h>
 
 /** 蓝牙管理器｜Bluetooth manager */
 #import <Fission_Sdk_iOS/FBCommandCallback.h>

@@ -207,6 +207,33 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)fbGetManualMeasurementDataStartTime:(NSInteger)startTime forEndTime:(NSInteger)endTime withBlock:(FBGetManualMeasureDataBlock _Nonnull)fbBlock;
 
 
+#pragma mark - 获取气压记录｜Get air pressure records
+/**
+ 获取气压记录｜Get air pressure records
+ @param startTime           开始时间，秒（时间戳）｜Start time, seconds (timestamp)
+ @param endTime                结束时间，秒（时间戳）｜End time, seconds (timestamp)
+*/
+- (void)fbGetAirPressureRecordsDataStartTime:(NSInteger)startTime forEndTime:(NSInteger)endTime withBlock:(FBGetAirPressureRecordBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 获取血液成分记录｜Get blood component records
+/**
+ 获取血液成分记录｜Get blood component records
+ @param startTime           开始时间，秒（时间戳）｜Start time, seconds (timestamp)
+ @param endTime                结束时间，秒（时间戳）｜End time, seconds (timestamp)
+*/
+- (void)fbGetBloodComponentRecordsDataStartTime:(NSInteger)startTime forEndTime:(NSInteger)endTime withBlock:(FBGetBloodComponentRecordBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 获取血糖记录｜Get blood glucose record
+/**
+ 获取血糖记录｜Get blood glucose record
+ @param startTime           开始时间，秒（时间戳）｜Start time, seconds (timestamp)
+ @param endTime                结束时间，秒（时间戳）｜End time, seconds (timestamp)
+*/
+- (void)fbGetBloodGlucoseRecordsDataStartTime:(NSInteger)startTime forEndTime:(NSInteger)endTime withBlock:(FBGetBloodGlucoseRecordBlock _Nonnull)fbBlock;
+
+
 #pragma mark - 获取指定记录和报告｜Get specific records and reports
 /**
  获取指定记录和报告｜Get specific records and reports
@@ -783,6 +810,48 @@ NS_ASSUME_NONNULL_BEGIN
  设置 NFC 秘钥数据(已远程破解)｜Set NFC key data (remotely cracked)
 */
 - (void)fbSetNFCKeyData:(NSData * _Nonnull)keyData withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 获取血压私人模式｜Get blood pressure private mode
+/**
+ 获取血压私人模式｜Get blood pressure private mode
+*/
+- (void)fbGetBloodPressurePrivateModeWithBlock:(FBGetBloodPressureBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 设置血压私人模式｜Set blood pressure private mode
+/**
+ 设置血压私人模式｜Set blood pressure private mode
+*/
+- (void)fbSetBloodPressurePrivateMode:(FBBloodPressureModel * _Nonnull)model withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 获取血液成分私人模式｜Get blood composition private mode
+/**
+ 获取血液成分私人模式｜Get blood composition private mode
+*/
+- (void)fbGetBloodCompositionPrivateModeWithBlock:(FBGetBloodCompositionBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 设置血液成分私人模式｜Set blood composition private mode
+/**
+ 设置血液成分私人模式｜Set blood composition private mode
+*/
+- (void)fbSetBloodCompositionPrivateMode:(FBBloodCompositionModel * _Nonnull)model withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 获取血糖私人模式｜Get blood sugar private mode
+/**
+ 获取血糖私人模式｜Get blood sugar private mode
+*/
+- (void)fbGetBloodSugarPrivateModeWithBlock:(FBGetBloodSugarBlock _Nonnull)fbBlock;
+
+
+#pragma mark - 设置血糖私人模式｜Set blood sugar private mode
+/**
+ 设置血糖私人模式｜Set blood sugar private mode
+*/
+- (void)fbSetBloodSugarPrivateMode:(FBBloodSugarModel * _Nonnull)model withBlock:(FBResultCallBackBlock _Nonnull)fbBlock;
 
 
 @end

@@ -98,6 +98,7 @@
 "没有此 ID 的卡片" = "No card with this ID";
 "创建卡片失败" = "Failed to create card";
 "删除卡片失败" = "Failed to delete card";
+"卡片已满" = "Card Full";
 
 /**
  FBBluetoothOTA

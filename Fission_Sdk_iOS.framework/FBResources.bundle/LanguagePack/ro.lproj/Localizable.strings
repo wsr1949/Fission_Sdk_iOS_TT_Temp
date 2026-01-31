@@ -98,6 +98,7 @@
 "没有此 ID 的卡片" = "Niciun card cu acest ID";
 "创建卡片失败" = "Crearea cardului a eșuat";
 "删除卡片失败" = "Ștergerea cardului a eșuat";
+"卡片已满" = "Card plin";
 
 /**
  FBBluetoothOTA

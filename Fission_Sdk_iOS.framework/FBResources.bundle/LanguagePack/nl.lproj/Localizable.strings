@@ -99,6 +99,7 @@ Parameterfout, de bovenste grens van hartslagherinnering zou groter dan of gelij
 "没有此 ID 的卡片" = "Geen kaart met deze ID";
 "创建卡片失败" = "Kaart aanmaken mislukt";
 "删除卡片失败" = "Kaart verwijderen mislukt";
+"卡片已满" = "Kaart vol";
 
 /**
  FBBluetoothOTA
